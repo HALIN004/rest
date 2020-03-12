@@ -17,7 +17,7 @@ $app->add(function ($req, $res, $next) {
 });
 
 // Get All Customers
-$app->get('/api/Aweonaos', function(Request $request, Response $response){
+$app->get('/api/Leyendas', function(Request $request, Response $response){
     $sql = "SELECT * FROM Leyendas";
 
     try{
@@ -36,7 +36,7 @@ $app->get('/api/Aweonaos', function(Request $request, Response $response){
 });
 
 // Get Single Customer
-$app->get('/api/DonWea/{id}', function(Request $request, Response $response){
+$app->get('/api/Leyenda/{id}', function(Request $request, Response $response){
     $id = $request->getAttribute('id');
 
     $sql = "SELECT * FROM Leyendas WHERE ID = $id";
@@ -57,7 +57,7 @@ $app->get('/api/DonWea/{id}', function(Request $request, Response $response){
 });
 
 // Add Customer
-$app->post('/api/Aweonaos/add', function(Request $request, Response $response){
+$app->post('/api/Leyendas/add', function(Request $request, Response $response){
     $first_name = $request->getParam('first_name');
     $last_name = $request->getParam('last_name');
     $phone = $request->getParam('phone');
@@ -66,7 +66,7 @@ $app->post('/api/Aweonaos/add', function(Request $request, Response $response){
     $city = $request->getParam('city');
     $state = $request->getParam('state');
 
-    $sql = "INSERT INTO customers (first_name,last_name,phone,email,address,city,state) VALUES
+    $sql = "INSERT INTO Leyendas (first_name,last_name,phone,email,address,city,state) VALUES
     (:first_name,:last_name,:phone,:email,:address,:city,:state)";
 
     try{
@@ -95,7 +95,7 @@ $app->post('/api/Aweonaos/add', function(Request $request, Response $response){
 });
 
 // Update Customer
-$app->put('/api/customer/update/{id}', function(Request $request, Response $response){
+$app->put('/api/Leyendas/update/{id}', function(Request $request, Response $response){
     $id = $request->getAttribute('id');
     $first_name = $request->getParam('first_name');
     $last_name = $request->getParam('last_name');
@@ -105,7 +105,7 @@ $app->put('/api/customer/update/{id}', function(Request $request, Response $resp
     $city = $request->getParam('city');
     $state = $request->getParam('state');
 
-    $sql = "UPDATE customers SET
+    $sql = "UPDATE Leyendas SET
 				first_name 	= :first_name,
 				last_name 	= :last_name,
                 phone		= :phone,
@@ -141,7 +141,7 @@ $app->put('/api/customer/update/{id}', function(Request $request, Response $resp
 });
 
 // Delete Customer
-$app->delete('/api/customer/delete/{id}', function(Request $request, Response $response){
+$app->delete('/api/Leyendas/delete/{id}', function(Request $request, Response $response){
     $id = $request->getAttribute('id');
 
     $sql = "DELETE FROM Leyendas WHERE ID = $id";

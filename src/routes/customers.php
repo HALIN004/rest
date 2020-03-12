@@ -17,8 +17,8 @@ $app->add(function ($req, $res, $next) {
 });
 
 // Get All Customers
-$app->get('/api/customers', function(Request $request, Response $response){
-    $sql = "SELECT * FROM customers";
+$app->get('/api/Aweonaos', function(Request $request, Response $response){
+    $sql = "SELECT * FROM Leyendas";
 
     try{
         // Get DB Object
@@ -27,19 +27,19 @@ $app->get('/api/customers', function(Request $request, Response $response){
         $db = $db->connect();
 
         $stmt = $db->query($sql);
-        $customers = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $Leyendas = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
-        echo json_encode($customers);
+        echo json_encode($Leyendas);
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
 });
 
 // Get Single Customer
-$app->get('/api/customer/{id}', function(Request $request, Response $response){
+$app->get('/api/DonWea/{id}', function(Request $request, Response $response){
     $id = $request->getAttribute('id');
 
-    $sql = "SELECT * FROM customers WHERE id = $id";
+    $sql = "SELECT * FROM Leyendas WHERE ID = $id";
 
     try{
         // Get DB Object
@@ -48,16 +48,16 @@ $app->get('/api/customer/{id}', function(Request $request, Response $response){
         $db = $db->connect();
 
         $stmt = $db->query($sql);
-        $customer = $stmt->fetch(PDO::FETCH_OBJ);
+        $Leyendas = $stmt->fetch(PDO::FETCH_OBJ);
         $db = null;
-        echo json_encode($customer);
+        echo json_encode($Leyendas);
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
 });
 
 // Add Customer
-$app->post('/api/customer/add', function(Request $request, Response $response){
+$app->post('/api/Aweonaos/add', function(Request $request, Response $response){
     $first_name = $request->getParam('first_name');
     $last_name = $request->getParam('last_name');
     $phone = $request->getParam('phone');
@@ -144,7 +144,7 @@ $app->put('/api/customer/update/{id}', function(Request $request, Response $resp
 $app->delete('/api/customer/delete/{id}', function(Request $request, Response $response){
     $id = $request->getAttribute('id');
 
-    $sql = "DELETE FROM customers WHERE id = $id";
+    $sql = "DELETE FROM Leyendas WHERE ID = $id";
 
     try{
         // Get DB Object
